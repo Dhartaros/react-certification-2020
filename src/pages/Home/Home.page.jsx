@@ -1,10 +1,31 @@
 import React, { useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { makeStyles } from '@material-ui/core/styles';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
 import { useAuth } from '../../providers/Auth';
 import './Home.styles.css';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  media: {
+    backgroundColor: theme.palette.common.grey,
+    height: 140,
+  },
+}));
+
 function HomePage() {
+  const classes = useStyles();
   const history = useHistory();
   const sectionRef = useRef(null);
   const { authenticated, logout } = useAuth();
@@ -17,21 +38,188 @@ function HomePage() {
 
   return (
     <section className="homepage" ref={sectionRef}>
-      <h1>Hello stranger!</h1>
-      {authenticated ? (
-        <>
-          <h2>Good to have you back</h2>
-          <span>
-            <Link to="/" onClick={deAuthenticate}>
-              ← logout
-            </Link>
-            <span className="separator" />
-            <Link to="/secret">show me something cool →</Link>
-          </span>
-        </>
-      ) : (
-        <Link to="/login">let me in →</Link>
-      )}
+      <Grid container spacing={0}>
+        <Grid item lg={2} sm={2} xs={2}></Grid>
+        <Grid item container spacing={2} lg={8} sm={8} xs={8}>
+          <Grid item lg={4} sm={5} xs={10}>
+            <Card className={classes.root}>
+              <CardActionArea>
+                <Link to="/video/id">
+                  <CardMedia
+                    className={classes.media}
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom align="left" variant="h5" component="h2">
+                      Lorem ipsum
+                    </Typography>
+                    <Typography align="left" variant="body2" color="textSecondary" component="p">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus sapien quis
+                      auctor ullamcorper.
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </CardActionArea>
+              <CardActions>
+                {authenticated ? (
+                  /* Remove onClick, it's there to avoid lint issues */
+                  <Button size="small" color="secondary" onClick={deAuthenticate}>
+                    Add to favorites
+                  </Button>
+                ) : (
+                    <Link to="/login" className={classes.link}>
+                      <Button size="small" color="secondary">
+                        Login to add to your favorites
+                      </Button>
+                    </Link>
+                )}
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item lg={4} sm={5} xs={10}>
+            <Card className={classes.root}>
+              <CardActionArea>
+                <Link to="/video/id">
+                  <CardMedia
+                    className={classes.media}
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom align="left" variant="h5" component="h2">
+                      Lorem ipsum
+                    </Typography>
+                    <Typography align="left" variant="body2" color="textSecondary" component="p">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus sapien quis
+                      auctor ullamcorper.
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </CardActionArea>
+              <CardActions>
+                {authenticated ? (
+                  <Button size="small" color="secondary">
+                    Add to favorites
+                  </Button>
+                ) : (
+                  <Link to="/login" className={classes.link}>
+                      <Button size="small" color="secondary">
+                        Login to add to your favorites
+                      </Button>
+                  </Link>
+                )}
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item lg={4} sm={5} xs={10}>
+            <Card className={classes.root}>
+              <CardActionArea>
+                <Link to="/video/id">
+                  <CardMedia
+                    className={classes.media}
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom align="left" variant="h5" component="h2">
+                      Lorem ipsum
+                    </Typography>
+                    <Typography align="left" variant="body2" color="textSecondary" component="p">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus sapien quis
+                      auctor ullamcorper.
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </CardActionArea>
+              <CardActions>
+                {authenticated ? (
+                  <Button size="small" color="secondary">
+                    Add to favorites
+                  </Button>
+                ) : (
+                  <Link to="/login" className={classes.link}>
+                      <Button size="small" color="secondary">
+                        Login to add to your favorites
+                      </Button>
+                  </Link>
+                )}
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item lg={4} sm={5} xs={10}>
+            <Card className={classes.root}>
+              <CardActionArea>
+                <Link to="/video/id">
+                  <CardMedia
+                    className={classes.media}
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom align="left" variant="h5" component="h2">
+                      Lorem ipsum
+                    </Typography>
+                    <Typography align="left" variant="body2" color="textSecondary" component="p">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus sapien quis
+                      auctor ullamcorper.
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </CardActionArea>
+              <CardActions>
+                {authenticated ? (
+                  <Button size="small" color="secondary">
+                    Add to favorites
+                  </Button>
+                ) : (
+                  <Link to="/login" className={classes.link}>
+                      <Button size="small" color="secondary">
+                        Login to add to your favorites
+                      </Button>
+                  </Link>
+                )}
+              </CardActions>
+            </Card>
+          </Grid>
+          <Grid item lg={4} sm={5} xs={10}>
+            <Card className={classes.root}>
+              <CardActionArea>
+                <Link to="/video/id">
+                  <CardMedia
+                    className={classes.media}
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title="Contemplative Reptile"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom align="left" variant="h5" component="h2">
+                      Lorem ipsum
+                    </Typography>
+                    <Typography align="left" variant="body2" color="textSecondary" component="p">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent rhoncus sapien quis
+                      auctor ullamcorper.
+                    </Typography>
+                  </CardContent>
+                </Link>
+              </CardActionArea>
+              <CardActions>
+                {authenticated ? (
+                  <Button size="small" color="secondary">
+                    Add to favorites
+                  </Button>
+                ) : (
+                  <Link to="/login" className={classes.link}>
+                      <Button size="small" color="secondary">
+                        Login to add to your favorites
+                      </Button>
+                  </Link>
+                )}
+              </CardActions>
+            </Card>
+          </Grid>
+        </Grid>
+        <Grid item lg={2} sm={2} xs={2}></Grid>
+      </Grid>
     </section>
   );
 }

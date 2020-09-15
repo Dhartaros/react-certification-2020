@@ -45,3 +45,7 @@
   border: none;
   border-radius: 3px;
 }
+
+a {
+  color: black !important;
+}
