@@ -14,11 +14,11 @@ const useStyles = makeStyles((theme) => ({
   },
   sidebar: {
     maxHeight: 485,
-    overflow: 'auto'
+    overflow: 'auto',
   },
   videoContainer: {
     width: '100%',
-  }
+  },
 }));
 
 function VideoPage() {
@@ -29,49 +29,53 @@ function VideoPage() {
     <section className={classes.videoContainer} ref={sectionRef}>
       <Grid container spacing={0}>
         <Grid item lg={8} sm={8} xs={12}>
-            <iframe width="920" height="485" title="video"
-                src="https://www.youtube.com/embed/nmXMgqjQzls" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
-            <Typography gutterBottom align="left" variant="h5" component="h2">
-                Video Title
-            </Typography>
-            <Typography gutterBottom align="left" variant="body2">
-                Video description
-            </Typography>
+          <iframe
+            width="920"
+            height="485"
+            title="video"
+            src="https://www.youtube.com/embed/nmXMgqjQzls"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+          <Typography gutterBottom align="left" variant="h5" component="h2">
+            Video Title
+          </Typography>
+          <Typography gutterBottom align="left" variant="body2">
+            Video description
+          </Typography>
         </Grid>
         <Grid item lg={4} sm={4} xs={0}>
-            <List className={classes.root, classes.sidebar} subheader={<li />}>
-                <ListItem alignItems='flex-start'>
-                    <img alt="thumbnail" className={classes.thumbnail}></img>
-                    <ListItemText primary={`Video title`} />
-                </ListItem>
-                <ListItem alignItems='flex-start'>
-                    <img alt="thumbnail" className={classes.thumbnail}></img>
-                    <ListItemText primary={`Video title`} />
-                </ListItem>
-                <ListItem alignItems='flex-start'>
-                    <img alt="thumbnail" className={classes.thumbnail}></img>
-                    <ListItemText primary={`Video title`} />
-                </ListItem>
-                <ListItem alignItems='flex-start'>
-                    <img alt="thumbnail" className={classes.thumbnail}></img>
-                    <ListItemText primary={`Video title`} />
-                </ListItem>
-                <ListItem alignItems='flex-start'>
-                    <img alt="thumbnail" className={classes.thumbnail}></img>
-                    <ListItemText primary={`Video title`} />
-                </ListItem>
-                <ListItem alignItems='flex-start'>
-                    <img alt="thumbnail" className={classes.thumbnail}></img>
-                    <ListItemText primary={`Video title`} />
-                </ListItem>
-                <ListItem alignItems='flex-start'>
-                    <img alt="thumbnail" className={classes.thumbnail}></img>
-                    <ListItemText primary={`Video title`} />
-                </ListItem>
-            </List>
+          <List className={(classes.root, classes.sidebar)} subheader={<li />}>
+            <ListItem alignItems="flex-start">
+              <img alt="thumbnail" className={classes.thumbnail} />
+              <ListItemText primary="Video title" />
+            </ListItem>
+            <ListItem alignItems="flex-start">
+              <img alt="thumbnail" className={classes.thumbnail} />
+              <ListItemText primary="Video title" />
+            </ListItem>
+            <ListItem alignItems="flex-start">
+              <img alt="thumbnail" className={classes.thumbnail} />
+              <ListItemText primary="Video title" />
+            </ListItem>
+            <ListItem alignItems="flex-start">
+              <img alt="thumbnail" className={classes.thumbnail} />
+              <ListItemText primary="Video title" />
+            </ListItem>
+            <ListItem alignItems="flex-start">
+              <img alt="thumbnail" className={classes.thumbnail} />
+              <ListItemText primary="Video title" />
+            </ListItem>
+            <ListItem alignItems="flex-start">
+              <img alt="thumbnail" className={classes.thumbnail} />
+              <ListItemText primary="Video title" />
+            </ListItem>
+            <ListItem alignItems="flex-start">
+              <img alt="thumbnail" className={classes.thumbnail} />
+              <ListItemText primary="Video title" />
+            </ListItem>
+          </List>
         </Grid>
       </Grid>
     </section>

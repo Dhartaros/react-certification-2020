@@ -98,7 +98,7 @@ const useStyles = makeStyles((theme) => ({
   },
   cyan: {
     backgroundColor: '#2196f3',
-  }
+  },
 }));
 
 export default function Navbar() {
@@ -119,7 +119,11 @@ export default function Navbar() {
   }
 
   const toggleDrawer = (anchor, open) => (event) => {
-    if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
       return;
     }
 
@@ -145,55 +149,56 @@ export default function Navbar() {
 
   const renderDrawer = (
     <SwipeableDrawer
-    anchor='left'
-    open={anchorOpen}
-    onClose={toggleDrawer('left', false)}
-    onOpen={toggleDrawer('left', true)}
+      anchor="left"
+      open={anchorOpen}
+      onClose={toggleDrawer('left', false)}
+      onOpen={toggleDrawer('left', true)}
     >
-        <div
-            role="presentation"
-            onClick={toggleDrawer('left', false)}
-            onKeyDown={toggleDrawer('left', false)}
-        >
-            <List>
-                <ListItem>
-                    <Link to="/" className={classes.link}>
-                      <div className={classes.textWithIcon}>
-                        <HomeOutlinedIcon/> Home
-                      </div>
-                    </Link>
-                </ListItem>
-            </List>
-            <Divider />
-            {authenticated ? (
-                <List>
-                    <ListItem>
-                      <Link to="/favorites" className={classes.link}>
-                        <div className={classes.textWithIcon}>
-                          <FavoriteBorderIcon/>Favorites
-                        </div>
-                      </Link>
-                    </ListItem>
-                    <ListItem>
-                      <Link to="" className={classes.link} onClick={deAuthenticate}>
-                        <div className={classes.textWithIcon}>
-                          <ExitToAppIcon/>Logout
-                        </div>
-                      </Link>
-                    </ListItem>
-                </List>
-            ) : (
-                <List>
-                    <ListItem>
-                      <Link to="/login" className={classes.link}>
-                      Sign In
-                      </Link>
-                    </ListItem>
-                </List>
-            )}
-        </div>
+      <div
+        role="presentation"
+        onClick={toggleDrawer('left', false)}
+        onKeyDown={toggleDrawer('left', false)}
+      >
+        <List>
+          <ListItem>
+            <Link to="/" className={classes.link}>
+              <div className={classes.textWithIcon}>
+                <HomeOutlinedIcon /> Home
+              </div>
+            </Link>
+          </ListItem>
+        </List>
+        <Divider />
+        {authenticated ? (
+          <List>
+            <ListItem>
+              <Link to="/favorites" className={classes.link}>
+                <div className={classes.textWithIcon}>
+                  <FavoriteBorderIcon />
+                  Favorites
+                </div>
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link to="" className={classes.link} onClick={deAuthenticate}>
+                <div className={classes.textWithIcon}>
+                  <ExitToAppIcon />
+                  Logout
+                </div>
+              </Link>
+            </ListItem>
+          </List>
+        ) : (
+          <List>
+            <ListItem>
+              <Link to="/login" className={classes.link}>
+                Sign In
+              </Link>
+            </ListItem>
+          </List>
+        )}
+      </div>
     </SwipeableDrawer>
-    
   );
 
   const menuId = 'primary-search-account-menu';
@@ -207,15 +212,15 @@ export default function Navbar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-        {authenticated ? (
-            <MenuItem onClick={deAuthenticate}>Logout</MenuItem>
-        ) : (
-            <MenuItem onClick={handleMenuClose}>
-                <Link to="/login" className={classes.link}>
-                Sign In
-                </Link>
-            </MenuItem>
-        )}
+      {authenticated ? (
+        <MenuItem onClick={deAuthenticate}>Logout</MenuItem>
+      ) : (
+        <MenuItem onClick={handleMenuClose}>
+          <Link to="/login" className={classes.link}>
+            Sign In
+          </Link>
+        </MenuItem>
+      )}
     </Menu>
   );
 
@@ -232,23 +237,23 @@ export default function Navbar() {
     >
       <MenuItem onClick={handleProfileMenuOpen}>
         {authenticated ? (
-            <IconButton
-                aria-label="account of current user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-            >
-                <Avatar className={classes.cyan}>W</Avatar>
-            </IconButton>
+          <IconButton
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <Avatar className={classes.cyan}>W</Avatar>
+          </IconButton>
         ) : (
-            <IconButton
-                aria-label="guest user"
-                aria-controls="primary-search-account-menu"
-                aria-haspopup="true"
-                color="inherit"
-            >
-                <AccountCircle />
-            </IconButton>
+          <IconButton
+            aria-label="guest user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
         )}
       </MenuItem>
     </Menu>
@@ -267,8 +272,14 @@ export default function Navbar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title, classes.textWithIcon} variant="h6" noWrap>
-            Wize<PlayArrowIcon />Tube
+          <Typography
+            className={(classes.title, classes.textWithIcon)}
+            variant="h6"
+            noWrap
+          >
+            Wize
+            <PlayArrowIcon />
+            Tube
           </Typography>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -286,27 +297,27 @@ export default function Navbar() {
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             {authenticated ? (
-                <IconButton
-                    edge="end"
-                    aria-label="account of current user"
-                    aria-controls={menuId}
-                    aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
-                    color="inherit"
-                >
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
                 <Avatar className={classes.cyan}>W</Avatar>
-                </IconButton>
+              </IconButton>
             ) : (
-                <IconButton
-                    edge="end"
-                    aria-label="guest user"
-                    aria-controls={menuId}
-                    aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
-                    color="inherit"
-                >
+              <IconButton
+                edge="end"
+                aria-label="guest user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+                color="inherit"
+              >
                 <AccountCircle />
-                </IconButton>
+              </IconButton>
             )}
           </div>
           <div className={classes.sectionMobile}>

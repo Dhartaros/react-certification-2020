@@ -31,7 +31,11 @@ function LoginPage() {
           </label>
         </div>
         <button type="submit">login</button>
-        <a target="_blank" rel="noreferrer" href="https://www.youtube.com/watch?v=rAlTOfl9F2w">
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href="https://www.youtube.com/watch?v=rAlTOfl9F2w"
+        >
           I don&apos;t have an account
         </a>
       </form>

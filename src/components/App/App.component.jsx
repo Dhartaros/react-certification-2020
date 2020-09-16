@@ -18,21 +18,11 @@ function App() {
         <Navbar />
         <Layout>
           <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route path="/video/:id">
-              <VideoPage />
-            </Route>
-            <Route exact path="/login">
-              <LoginPage />
-            </Route>
-            <Private exact path="/favorites">
-              <FavoritesPage />
-            </Private>
-            <Route path="*">
-              <NotFound />
-            </Route>
+            <Route path="/" component={HomePage} exact />
+            <Route path="/video/:id" component={VideoPage} />
+            <Route path="/login" component={LoginPage} exact />
+            <Private path="/favorites" component={FavoritesPage} exact />
+            <Route path="*" component={NotFound} />
           </Switch>
         </Layout>
       </AuthProvider>
