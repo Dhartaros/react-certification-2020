@@ -81,7 +81,7 @@ function LoginPage() {
             <Input required type="password" id="password" />
           </label>
         </Group>
-        <Button type="submit">login</Button>
+        <Button type="submit">Sign In</Button>
         <NoAccountLink
           target="_blank"
           rel="noopener noreferrer"

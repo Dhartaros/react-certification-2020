@@ -5,13 +5,21 @@ import Typography from '@material-ui/core/Typography';
 import { API_KEY, LOG_STYLES } from '../../utils/constants';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
 
+const Container = styled(Grid)`
+    position: relative;
+    min-width: 100%;
+    padding-bottom: 56.25%;
+`;
+
 const VideoPlayer = styled.iframe`
     width: 100%;
     height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
 `;
 
 export default function Video({ id }) {
-    const classes = useStyles();
     const [currentVideo, setCurrentVideo] = useLocalStorage('currentVideo');
 
     // TODO: fix title and description not updating
@@ -35,12 +43,10 @@ export default function Video({ id }) {
     }, []);
 
     return (
-        <Grid item lg={7} sm={7} xs={11}>
+        <Container item lg={7} sm={7} xs={11}>
             <VideoPlayer
-                className={classes.video}
                 title="video"
                 src={`https://www.youtube.com/embed/${id}`}
-                frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
             />
@@ -50,6 +56,6 @@ export default function Video({ id }) {
             <Typography gutterBottom align="left" variant="body2">
                 {currentVideo === 'undefined' ? currentVideo.snippet.description : ''}
             </Typography>
-        </Grid>
+        </Container>
     );
 }

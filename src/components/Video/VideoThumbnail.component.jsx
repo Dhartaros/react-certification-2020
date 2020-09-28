@@ -1,6 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -14,18 +14,20 @@ import { LOG_STYLES } from '../../utils/constants';
 
 import { useAuth } from '../../providers/Auth';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-  },
-  media: {
-    backgroundColor: theme.palette.common.grey,
-    height: 140,
-  },
-}));
+const Video = styled(Card)`
+  flex-grow: 1;
+`;
+
+const Thumbnail = styled(CardMedia)`
+  background-color: grey;
+  height: 140px;
+`;
+
+const Title = styled(Typography)`
+  color: black !important;
+`;
 
 export default function VideoThumbnail({ id, title, description, thumbnail }) {
-  const classes = useStyles();
   const { authenticated } = useAuth();
 
   const [, setCurrentVideo] = useLocalStorage('currentVideo', {});
@@ -37,8 +39,8 @@ export default function VideoThumbnail({ id, title, description, thumbnail }) {
         videoId: id,
       },
       snippet: {
-        title,
-        description,
+        title: title,
+        description: description,
       },
     });
   }
@@ -88,14 +90,14 @@ export default function VideoThumbnail({ id, title, description, thumbnail }) {
 
   return (
     <Grid item lg={4} sm={5} xs={10}>
-      <Card className={classes.root}>
+      <Video>
         <CardActionArea>
           <Link to={`/video/${id}`} onClick={handleClick}>
-            <CardMedia className={classes.media} image={thumbnail} title={title} />
+            <Thumbnail image={thumbnail} title={title} />
             <CardContent>
-              <Typography gutterBottom align="left" variant="h5" component="h2">
+              <Title gutterBottom align="left" variant="h5" component="h2">
                 {title}
-              </Typography>
+              </Title>
               <Typography
                 align="left"
                 variant="body2"
@@ -115,14 +117,14 @@ export default function VideoThumbnail({ id, title, description, thumbnail }) {
                 : 'I LOVE THIS!'}
             </Button>
           ) : (
-            <Link to="/login" className={classes.link}>
+            <Link to="/login">
               <Button size="small" color="secondary">
                 Login to add to your favorites
               </Button>
             </Link>
           )}
         </CardActions>
-      </Card>
+      </Video>
     </Grid>
   );
 }
