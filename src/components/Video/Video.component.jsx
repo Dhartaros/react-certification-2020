@@ -1,70 +1,60 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import { makeStyles } from '@material-ui/core/styles';
+import { API_KEY, LOG_STYLES } from '../../utils/constants'
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-import { useAuth } from '../../providers/Auth';
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
+const useStyles = makeStyles(() => ({
+    wrapper: {
+        position: 'relative',
+        paddingBottom: '56.25%',
     },
-    media: {
-        backgroundColor: theme.palette.common.grey,
-        height: 140,
+    video: {
+        width: '100%',
+        height: '100%',
     },
 }));
 
-export default function Video({id, title, description, thumbnail}) {
+export default function Video({id}) {
     const classes = useStyles();
-    const { authenticated } = useAuth();
+    const [ currentVideo, setCurrentVideo ] = useLocalStorage('currentVideo');
 
+    // TODO: fix title and description not updating
+    /* eslint react-hooks/exhaustive-deps: 0 */
+    useEffect(() => {
+        // URL to load YouTube video & info
+        const VIDEO_INFO_API_URL = `https://www.googleapis.com/youtube/v3/videos?part=id,snippet&id=${id}&key=${API_KEY}`;
+        // Load YouTube video
+        async function fetchVideoInfo() {
+            try {
+                const response = await fetch(VIDEO_INFO_API_URL);
+                const result = await response.json();
+                console.log('%c[INFO] Video info successfully retrieved.', LOG_STYLES.info);
+                setCurrentVideo(await result.items);
+            } catch (error) {
+                console.log(`%c[ERROR] ${error}`, LOG_STYLES.error);
+            }
+        }
+
+        fetchVideoInfo();
+    }, []);
+    
     return (
-        <Grid item lg={4} sm={5} xs={10}>
-            <Card className={classes.root}>
-                <CardActionArea>
-                    <Link to={`/video/${id}`}>
-                        <CardMedia
-                            className={classes.media}
-                            image={thumbnail}
-                            title={title}
-                        />
-                        <CardContent>
-                            <Typography gutterBottom align="left" variant="h5" component="h2">
-                                {title}
-                            </Typography>
-                            <Typography
-                            align="left"
-                            variant="body2"
-                            color="textSecondary"
-                            component="p"
-                            >
-                                {description}
-                            </Typography>
-                        </CardContent>
-                    </Link>
-                </CardActionArea>
-                <CardActions>
-                    {authenticated ? (
-                    <Button size="small" color="secondary">
-                        Add to favorites
-                    </Button>
-                    ) : (
-                    <Link to="/login" className={classes.link}>
-                        <Button size="small" color="secondary">
-                            Login to add to your favorites
-                        </Button>
-                    </Link>
-                    )}
-                </CardActions>
-            </Card>
+        <Grid item lg={7} sm={7} xs={11} >
+                <iframe className={classes.video}
+                    title="video"
+                    src={`https://www.youtube.com/embed/${id}`}
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                />
+            <Typography gutterBottom align="left" variant="h5" component="h2">
+                { currentVideo === "undefined" ? currentVideo.snippet.title : "" }
+            </Typography>
+            <Typography gutterBottom align="left" variant="body2">
+                { currentVideo === "undefined" ? currentVideo.snippet.description : "" }
+            </Typography>
         </Grid>
     );
 }

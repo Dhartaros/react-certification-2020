@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import VideoDetails from '../../components/Video/VideoDetails.component'
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   videoContainer: {
     width: '100%',
   },

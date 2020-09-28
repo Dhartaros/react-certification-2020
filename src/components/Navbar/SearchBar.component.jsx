@@ -2,6 +2,7 @@ import React from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
+import { useQuery } from '../../utils/hooks/useQuery';
 
 const useStyles = makeStyles((theme) => ({
     search: {
@@ -45,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar() {
     const classes = useStyles();
+    const { query, setQuery } = useQuery();
     
     return(
         <div className={classes.search}>
@@ -58,6 +60,8 @@ export default function SearchBar() {
                     input: classes.inputInput,
                 }}
                 inputProps={{ 'aria-label': 'search' }}
+                value={query}
+                onChange={(event) => { setQuery(event.target.value); }}
             />
         </div>
     )
