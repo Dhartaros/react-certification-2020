@@ -1,17 +1,19 @@
 import React from 'react';
+import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SearchBar from './SearchBar.component';
 import Sidebar from './Sidebar.component';
 import UserMenu from './UserMenu.component';
-import Typography from '@material-ui/core/Typography';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+
+const Container = styled.iframe`
+    flex-grow: 100%;
+`;
 
 const useStyles = makeStyles((theme) => ({
-  grow: {
-    flexGrow: 1,
-  },
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -32,7 +34,7 @@ export default function Navbar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.grow}>
+    <Container>
       <AppBar className={classes.navbar} position="sticky">
         <Toolbar>
           <Sidebar />
@@ -49,7 +51,7 @@ export default function Navbar() {
           <div className={classes.grow} />
           <UserMenu />
         </Toolbar>
-      </AppBar>  
-    </div>
+      </AppBar>
+    </Container>
   );
 }

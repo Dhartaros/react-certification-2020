@@ -9,18 +9,20 @@ import NotFound from '../../pages/NotFound';
 import Private from '../Private';
 import Layout from '../Layout';
 import Navbar from '../Navbar';
-import VideoContext from "../../state/VideoContext";
-import videos from "../../videos";
-import SearchContext from "../../state/SearchContext";
+import VideoContext from '../../state/VideoContext';
+import videos from '../../videos';
+import SearchContext from '../../state/SearchContext';
 
 function App() {
   const [videoList, setVideoList] = useState(videos);
   const [currentVideo, setCurrentVideo] = useState(videos);
-  const [query, setQuery] = useState("wizeline");
+  const [query, setQuery] = useState('wizeline');
 
   return (
-    <VideoContext.Provider value={{currentVideo, videoList, setCurrentVideo, setVideoList}}>
-      <SearchContext.Provider value={{query, setQuery}}>
+    <VideoContext.Provider
+      value={{ currentVideo, videoList, setCurrentVideo, setVideoList }}
+    >
+      <SearchContext.Provider value={{ query, setQuery }}>
         <BrowserRouter>
           <AuthProvider>
             <Navbar />

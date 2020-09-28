@@ -1,21 +1,20 @@
 import React, { useRef } from 'react';
-import VideoDetails from '../../components/Video/VideoDetails.component'
+import styled from 'styled-components';
 import { makeStyles } from '@material-ui/core/styles';
+import VideoDetails from '../../components/Video/VideoDetails.component';
 
-const useStyles = makeStyles(() => ({
-  videoContainer: {
-    width: '100%',
-  },
-}));
+const VideoContainer = styled.section`
+  width: 100%;
+`;
 
 function VideoPage() {
   const classes = useStyles();
   const sectionRef = useRef(null);
 
   return (
-    <section className={classes.videoContainer} ref={sectionRef}>
+    <VideoContainer ref={sectionRef}>
       <VideoDetails />
-    </section>
+    </VideoContainer>
   );
 }
 

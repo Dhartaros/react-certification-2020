@@ -1,15 +1,18 @@
 import React, { useRef } from 'react';
+import styled from 'styled-components';
 import VideoList from '../../components/Video/VideoList.component';
 
-import './Home.styles.css';
+const Container = styled.section`
+  text-align: center;
+`;
 
 function HomePage() {
   const sectionRef = useRef(null);
 
   return (
-    <section className="homepage" ref={sectionRef}>
+    <Container ref={sectionRef}>
       <VideoList />
-    </section>
+    </Container>
   );
 }
 

@@ -1,9 +1,9 @@
 import React from 'react';
 
 const VideoContext = React.createContext({
-    videos: [],
-    currentVideo: {},
-    setCurrentVideo: () => {}
+  videos: [],
+  currentVideo: {},
+  setCurrentVideo: () => {},
 });
 
 export default VideoContext;

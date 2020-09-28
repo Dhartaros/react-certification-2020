@@ -14,105 +14,104 @@ import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../providers/Auth';
 
 const useStyles = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    link: {
-        color: 'black',
-    },
-    textWithIcon: {
-        display: 'flex',
-        alignItems: 'center',
-    },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  link: {
+    color: 'black',
+  },
+  textWithIcon: {
+    display: 'flex',
+    alignItems: 'center',
+  },
 }));
 
 export default function Sidebar() {
-    const classes = useStyles();
-    const history = useHistory();
-    const { authenticated, logout } = useAuth();
-    const [anchorOpen, setAnchorOpen] = React.useState(false);
+  const classes = useStyles();
+  const history = useHistory();
+  const { authenticated, logout } = useAuth();
+  const [anchorOpen, setAnchorOpen] = React.useState(false);
 
-    function deAuthenticate(event) {
-        event.preventDefault();
-        logout();
-        history.push('/');
+  function deAuthenticate(event) {
+    event.preventDefault();
+    logout();
+    history.push('/');
+  }
+
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event &&
+      event.type === 'keydown' &&
+      (event.key === 'Tab' || event.key === 'Shift')
+    ) {
+      return;
     }
-    
-    const toggleDrawer = (open) => (event) => {
-        if (
-            event &&
-            event.type === 'keydown' &&
-            (event.key === 'Tab' || event.key === 'Shift')
-        ) {
-            return;
-        }
-    
-        setAnchorOpen(open);
-    };
 
-    return(
-        <div>
-            <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-            onClick={toggleDrawer(true)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <SwipeableDrawer
-            anchor="left"
-            open={anchorOpen}
-            onClose={toggleDrawer(false)}
-            onOpen={toggleDrawer(true)}
-            >
-            <div
-                role="presentation"
-                onClick={toggleDrawer(false)}
-                onKeyDown={toggleDrawer(false)}
-            >
-                <List>
-                <ListItem>
-                    <Link to="/" className={classes.link}>
-                    <div className={classes.textWithIcon}>
-                        <HomeOutlinedIcon /> Home
-                    </div>
-                    </Link>
-                </ListItem>
-                </List>
-                <Divider />
-                {authenticated ? (
-                <List>
-                    <ListItem>
-                    <Link to="/favorites" className={classes.link}>
-                        <div className={classes.textWithIcon}>
-                        <FavoriteBorderIcon />
-                        Favorites
-                        </div>
-                    </Link>
-                    </ListItem>
-                    <ListItem>
-                    <Link to="" className={classes.link} onClick={deAuthenticate}>
-                        <div className={classes.textWithIcon}>
-                        <ExitToAppIcon />
-                        Logout
-                        </div>
-                    </Link>
-                    </ListItem>
-                </List>
-                ) : (
-                <List>
-                    <ListItem>
-                    <Link to="/login" className={classes.link}>
-                        Sign In
-                    </Link>
-                    </ListItem>
-                </List>
-                )}
-            </div>
-        </SwipeableDrawer>
+    setAnchorOpen(open);
+  };
+
+  return (
+    <div>
+      <IconButton
+        edge="start"
+        className={classes.menuButton}
+        color="inherit"
+        aria-label="open drawer"
+        onClick={toggleDrawer(true)}
+      >
+        <MenuIcon />
+      </IconButton>
+      <SwipeableDrawer
+        anchor="left"
+        open={anchorOpen}
+        onClose={toggleDrawer(false)}
+        onOpen={toggleDrawer(true)}
+      >
+        <div
+          role="presentation"
+          onClick={toggleDrawer(false)}
+          onKeyDown={toggleDrawer(false)}
+        >
+          <List>
+            <ListItem>
+              <Link to="/" className={classes.link}>
+                <div className={classes.textWithIcon}>
+                  <HomeOutlinedIcon /> Home
+                </div>
+              </Link>
+            </ListItem>
+          </List>
+          <Divider />
+          {authenticated ? (
+            <List>
+              <ListItem>
+                <Link to="/favorites" className={classes.link}>
+                  <div className={classes.textWithIcon}>
+                    <FavoriteBorderIcon />
+                    Favorites
+                  </div>
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Link to="" className={classes.link} onClick={deAuthenticate}>
+                  <div className={classes.textWithIcon}>
+                    <ExitToAppIcon />
+                    Logout
+                  </div>
+                </Link>
+              </ListItem>
+            </List>
+          ) : (
+            <List>
+              <ListItem>
+                <Link to="/login" className={classes.link}>
+                  Sign In
+                </Link>
+              </ListItem>
+            </List>
+          )}
         </div>
-        
-    )
+      </SwipeableDrawer>
+    </div>
+  );
 }
