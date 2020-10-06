@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
   searchIcon: {
     padding: theme.spacing(0, 2),
   },
-  inputInput: {
+  input: {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create('width'),
@@ -57,19 +57,19 @@ export default function SearchBar() {
   const classes = useStyles();
   const { query, setQuery } = useSearch();
 
+  const handleChange = (event) => setQuery(event.target.value);
+
   return (
     <Container className={classes.search}>
       <Icon className={classes.searchIcon}>
         <SearchIcon />
       </Icon>
       <Input
-        className={classes.inputInput}
+        className={classes.input}
         placeholder="Search…"
         inputProps={{ 'aria-label': 'search' }}
         value={query}
-        onChange={(event) => {
-          setQuery(event.target.value);
-        }}
+        onChange={handleChange}
       />
     </Container>
   );
