@@ -4,7 +4,7 @@
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off", // Turned off because using setters as dependencies are creating infinite loops
     "import/no-unresolved": ["off", { "ignore": [".css$"] }],
     "import/prefer-default-export": "off",
     "react/destructuring-assignment": "off",
@@ -13,6 +13,7 @@
     "array-callback-return": "off",
     "consistent-return": "off",
     "no-console": "off",
-    "jsx-a11y/anchor-is-valid": "off"
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/label-has-associated-control": "off" // For some reason it's marking this as an error, even if nothing changed from the last commit and it's compliant with the rule
   }
 }

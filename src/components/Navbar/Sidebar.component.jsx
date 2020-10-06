@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+/* Styles */
 import { makeStyles } from '@material-ui/core/styles';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
@@ -9,8 +11,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
-import { Link, useHistory } from 'react-router-dom';
+/* Providers */
 import { useAuth } from '../../providers/Auth';
 
 const useStyles = makeStyles((theme) => ({

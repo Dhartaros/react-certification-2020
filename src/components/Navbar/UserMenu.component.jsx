@@ -1,11 +1,13 @@
 import React from 'react';
+import { Link, useHistory } from 'react-router-dom';
+/* Styles */
 import styled from 'styled-components';
 import IconButton from '@material-ui/core/IconButton';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Avatar from '@material-ui/core/Avatar';
 import AccountCircle from '@material-ui/icons/AccountCircle';
-import { Link, useHistory } from 'react-router-dom';
+/* Providers */
 import { useAuth } from '../../providers/Auth';
 
 const Container = styled.div`

@@ -1,5 +1,5 @@
 const AUTH_STORAGE_KEY = 'wa_cert_authenticated';
-const API_KEY = 'AIzaSyAfY7HPDO8wU7GtK2Bf4r43AZYNeEPg0tY'; // 'AIzaSyCuaufIdrnMJpc7-whv3mmxdFnExUM-Ag0';
+const API_KEY = 'AIzaSyDA5fJ8Is6P0JG54ytincUxjL_5kG_8Myc';
 const LOG_STYLES = {
   info: 'color: #bada55',
   warn: 'color: #dff280',

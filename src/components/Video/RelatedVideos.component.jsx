@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+/* Styles */
 import styled from 'styled-components';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+/* Utils */
 import { API_KEY, LOG_STYLES } from '../../utils/constants';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
 
@@ -26,7 +28,6 @@ export default function RelatedVideos({ id }) {
     const [relatedVideos, setRelatedVideos] = useLocalStorage('relatedVideos', []);
 
     // TODO: fix related videos not updating
-    /* eslint react-hooks/exhaustive-deps: 0 */
     useEffect(() => {
     // URL to load related videos
     const RELATED_VIDEOS_API_URL = `https://www.googleapis.com/youtube/v3/search?part=id,snippet&type=video&maxResults=20&relatedToVideoId=${id}&key=${API_KEY}`;
@@ -43,7 +44,7 @@ export default function RelatedVideos({ id }) {
     }
 
     fetchRelatedVideos();
-  }, []);
+  }, [id, relatedVideos]);
 
   return (
     <Container subheader={<li />}>

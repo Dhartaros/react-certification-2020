@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+/* Styles */
 import Grid from '@material-ui/core/Grid';
+/* Components */
 import Video from './Video.component';
 import RelatedVideos from './RelatedVideos.component';
 

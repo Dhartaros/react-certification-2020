@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
+/* Styles */
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+/* Utils */
 import { API_KEY, LOG_STYLES } from '../../utils/constants';
 import useLocalStorage from '../../utils/hooks/useLocalStorage';
 
@@ -23,7 +25,6 @@ export default function Video({ id }) {
     const [currentVideo, setCurrentVideo] = useLocalStorage('currentVideo');
 
     // TODO: fix title and description not updating
-    /* eslint react-hooks/exhaustive-deps: 0 */
     useEffect(() => {
         // URL to load YouTube video & info
         const VIDEO_INFO_API_URL = `https://www.googleapis.com/youtube/v3/videos?part=id,snippet&id=${id}&key=${API_KEY}`;
@@ -40,7 +41,7 @@ export default function Video({ id }) {
         }
 
         fetchVideoInfo();
-    }, []);
+    }, [id, currentVideo]);
 
     return (
         <Container item lg={7} sm={7} xs={11}>

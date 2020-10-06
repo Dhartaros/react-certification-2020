@@ -1,24 +1,24 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+/* Styles */
 import Grid from '@material-ui/core/Grid';
-import useLocalStorage from '../../utils/hooks/useLocalStorage';
-import { useQuery } from '../../utils/hooks/useQuery';
+/* Components */
 import VideoThumbnail from './VideoThumbnail.component';
+/* Utils */
+import useLocalStorage from '../../utils/hooks/useLocalStorage';
 import { API_KEY, LOG_STYLES } from '../../utils/constants';
-import VideoContext from '../../state/VideoContext';
+/* Providers */
+import { useVideo } from '../../providers/Video';
+import { useSearch } from '../../providers/Search';
 
 export default function VideoList() {
-  const { videoList, setVideoList } = useContext(VideoContext);
-  const { query } = useQuery();
-  const [, setCurrentVideo] = useLocalStorage('currentVideo');
+  const { videoList, setVideoList } = useVideo();
+  const { query } = useSearch();
   const [favoriteVideos] = useLocalStorage('favoriteVideos', []);
   const location = useLocation();
 
-  /* eslint react-hooks/exhaustive-deps: 0 */
   useEffect(() => {
     const API_URL = `https://www.googleapis.com/youtube/v3/search?part=id,snippet&type=video&maxResults=21&q=${query}&key=${API_KEY}`;
-
-    setCurrentVideo({});
 
     async function fetchVideos() {
       try {
@@ -36,7 +36,7 @@ export default function VideoList() {
     } else {
       fetchVideos();
     }
-  }, []);
+  }, [query, location, favoriteVideos]);
 
   return (
     <Grid container spacing={0}>

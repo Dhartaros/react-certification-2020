@@ -1,9 +1,11 @@
 import React from 'react';
+/* Styles */
 import styled from 'styled-components';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
-import { useQuery } from '../../utils/hooks/useQuery';
+/* Providers */
+import { useSearch } from '../../providers/Search';
 
 const Container = styled.div`
   position: relative;
@@ -53,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SearchBar() {
   const classes = useStyles();
-  const { query, setQuery } = useQuery();
+  const { query, setQuery } = useSearch();
 
   return (
     <Container className={classes.search}>
