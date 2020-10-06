@@ -20,7 +20,7 @@ const LoginLink = styled(Link)`
 `;
 
 const User = styled(Avatar)`
-  background-color: #2196F3 !important;
+  background-color: #2196f3 !important;
 `;
 
 export default function UserMenu() {
@@ -84,9 +84,7 @@ export default function UserMenu() {
           <MenuItem onClick={deAuthenticate}>Logout</MenuItem>
         ) : (
           <MenuItem onClick={handleMenuClose}>
-            <LoginLink to="/login">
-              Sign In
-            </LoginLink>
+            <LoginLink to="/login">Sign In</LoginLink>
           </MenuItem>
         )}
       </Menu>

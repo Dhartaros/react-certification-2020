@@ -14,7 +14,7 @@ import NotFound from '../../pages/NotFound';
 import AuthProvider from '../../providers/Auth';
 import VideoProvider from '../../providers/Video';
 import SearchProvider from '../../providers/Search';
-import FavoriteProvider from '../../utils/store/FavoriteProvider'
+import FavoriteProvider from '../../utils/store/FavoriteProvider';
 
 function App() {
   return (

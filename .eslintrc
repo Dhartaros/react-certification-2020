@@ -4,7 +4,7 @@
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": "error",
-    "react-hooks/exhaustive-deps": "off", // Turned off because using setters as dependencies are creating infinite loops
+    "react-hooks/exhaustive-deps": "warn",
     "import/no-unresolved": ["off", { "ignore": [".css$"] }],
     "import/prefer-default-export": "off",
     "react/destructuring-assignment": "off",

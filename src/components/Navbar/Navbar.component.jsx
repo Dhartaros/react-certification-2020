@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 const WizetubeNavbar = styled(AppBar)`
-  background-color: #F2575D !important;
+  background-color: #f2575d !important;
   margin-bottom: 5em;
 `;
 
@@ -30,10 +30,12 @@ export default function Navbar() {
     <Container>
       <WizetubeNavbar position="sticky">
         <Toolbar>
-        <Sidebar />
+          <Sidebar />
           <Link to="/">
-            <Logo variant="h6" noWrap >
-              Wize<PlayArrowIcon />Tube
+            <Logo variant="h6" noWrap>
+              Wize
+              <PlayArrowIcon />
+              Tube
             </Logo>
           </Link>
           <SearchBar />

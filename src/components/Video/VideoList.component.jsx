@@ -17,6 +17,8 @@ export default function VideoList() {
   const [favoriteVideos] = useLocalStorage('favoriteVideos', []);
   const location = useLocation();
 
+  // Turned off because using setters as dependencies are creating infinite loops
+  /* eslint react-hooks/exhaustive-deps: 0 */
   useEffect(() => {
     const API_URL = `https://www.googleapis.com/youtube/v3/search?part=id,snippet&type=video&maxResults=21&q=${query}&key=${API_KEY}`;
 

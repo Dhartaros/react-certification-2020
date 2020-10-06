@@ -42,8 +42,8 @@ export default function VideoThumbnail({ id, title, description, thumbnail }) {
         videoId: id,
       },
       snippet: {
-        title: title,
-        description: description,
+        title,
+        description,
       },
     });
   }
@@ -51,8 +51,12 @@ export default function VideoThumbnail({ id, title, description, thumbnail }) {
   function toggleFavorite() {
     const clickedVideo = {
       id: { videoId: id },
-      snippet: { title: title, description: description, thumbnails: { medium: { url: thumbnail } } }
-    }
+      snippet: {
+        title,
+        description,
+        thumbnails: { medium: { url: thumbnail } },
+      },
+    };
 
     const newFavoriteVideos = favorite(favoriteVideos, clickedVideo);
 
@@ -69,7 +73,12 @@ export default function VideoThumbnail({ id, title, description, thumbnail }) {
               <Title gutterBottom align="left" variant="h5" component="h2">
                 {title}
               </Title>
-              <Typography align="left" variant="body2" color="textSecondary" component="p">
+              <Typography
+                align="left"
+                variant="body2"
+                color="textSecondary"
+                component="p"
+              >
                 {description}
               </Typography>
             </CardContent>
